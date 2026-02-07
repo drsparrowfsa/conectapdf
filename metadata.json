@@ -1,0 +1,7 @@
+{
+  "name": "ConectaPDF Redesign",
+  "description": "Uma plataforma moderna e inteligente para manipulação de PDFs e imagens com IA integrada.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
