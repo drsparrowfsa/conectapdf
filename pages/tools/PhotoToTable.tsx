@@ -130,7 +130,7 @@ const PhotoToTable: React.FC = () => {
         {/* Feature Cards Grid */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pb-12">
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm transition-all hover:shadow-md group">
-            <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+            <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
               <Cpu size={24} />
             </div>
             <h3 className="font-bold text-slate-900 mb-2">{t('photoToTable.features.ai.title')}</h3>
@@ -138,7 +138,7 @@ const PhotoToTable: React.FC = () => {
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm transition-all hover:shadow-md group">
-            <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+            <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
               <Activity size={24} />
             </div>
             <h3 className="font-bold text-slate-900 mb-2">{t('photoToTable.features.precision.title')}</h3>
@@ -146,7 +146,7 @@ const PhotoToTable: React.FC = () => {
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm transition-all hover:shadow-md group">
-            <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+            <div className="w-12 h-12 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-pink-600 group-hover:text-white transition-colors">
               <Share2 size={24} />
             </div>
             <h3 className="font-bold text-slate-900 mb-2">{t('photoToTable.features.export.title')}</h3>
@@ -154,14 +154,7 @@ const PhotoToTable: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8 bg-indigo-50 p-8 rounded-3xl">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">{t('photoToTable.tipsTitle')}</h3>
-          <ul className="space-y-3 text-slate-600">
-            {(t('photoToTable.tips', { returnObjects: true }) as string[]).map((tip, idx) => (
-              <li key={idx} className="flex gap-2">✅ {tip}</li>
-            ))}
-          </ul>
-        </div>
+
       </div>
     </div>
   );
