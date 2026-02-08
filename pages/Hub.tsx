@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
-import { Search, Filter } from 'lucide-react';
+import React from 'react';
+import { Search } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
 import ToolCard from '../components/ToolCard';
@@ -10,8 +11,13 @@ import { useTranslation } from 'react-i18next';
 
 const Hub: React.FC = () => {
   const { t } = useTranslation();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<ToolCategory>(ToolCategory.ALL);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchQuery = searchParams.get('search') || '';
+  const categoryParam = searchParams.get('category');
+
+  // Find the matching enum value for the category param, defaulting to ALL
+  const selectedCategory = Object.values(ToolCategory).find(c => c === categoryParam) || ToolCategory.ALL;
 
   const categories = Object.values(ToolCategory);
 
@@ -21,6 +27,23 @@ const Hub: React.FC = () => {
     [ToolCategory.PDF]: 'pdf',
     [ToolCategory.AI]: 'ai',
     [ToolCategory.CONVERTER]: 'converter'
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchParams(prev => {
+      if (value) prev.set('search', value);
+      else prev.delete('search');
+      return prev;
+    }, { replace: true });
+  };
+
+  const handleCategoryChange = (category: ToolCategory) => {
+    setSearchParams(prev => {
+      if (category === ToolCategory.ALL) prev.delete('category');
+      else prev.set('category', category);
+      return prev;
+    });
   };
 
   const filteredTools = TOOLS.filter(tool => {
@@ -46,7 +69,7 @@ const Hub: React.FC = () => {
               placeholder={t('hub.search')}
               className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearchChange}
             />
           </div>
 
@@ -54,10 +77,10 @@ const Hub: React.FC = () => {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => handleCategoryChange(cat)}
                 className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${selectedCategory === cat
-                    ? 'bg-indigo-600 text-white shadow-lg'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-indigo-600 text-white shadow-lg'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
               >
                 {t(`hub.categories.${categoryKeys[cat] || 'all'}`)}

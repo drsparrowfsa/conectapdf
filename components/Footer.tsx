@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
@@ -18,10 +17,23 @@ const Footer: React.FC = () => {
                 className="h-10 w-auto object-contain"
               />
             </div>
-            <p className="text-slate-500 max-w-sm leading-relaxed">
+            <p className="text-slate-500 max-w-sm leading-relaxed mb-8">
               {t('footer.desc')}
             </p>
+            <div className="flex gap-4">
+              <a href="#" className="p-2.5 bg-slate-50 rounded-xl hover:bg-indigo-600 hover:text-white transition-all text-slate-600 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-indigo-500/20"><Github size={18} /></a>
+              <a
+                href={`https://wa.me/${t('footer.phone').replace(/[^0-9]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 bg-slate-50 rounded-xl hover:bg-indigo-600 hover:text-white transition-all text-slate-600 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-indigo-500/20"
+              >
+                <MessageCircle size={18} />
+              </a>
+              <a href="#" className="p-2.5 bg-slate-50 rounded-xl hover:bg-indigo-600 hover:text-white transition-all text-slate-600 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-indigo-500/20"><Linkedin size={18} /></a>
+            </div>
           </div>
+
           <div>
             <h3 className="text-slate-900 font-bold mb-6">{t('footer.links')}</h3>
             <ul className="space-y-3">
@@ -31,13 +43,40 @@ const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-indigo-600 transition-colors text-sm font-medium">{t('footer.contact')}</a></li>
             </ul>
           </div>
+
           <div>
-            <h3 className="text-slate-900 font-bold mb-6">{t('footer.social')}</h3>
-            <div className="flex gap-4">
-              <a href="#" className="p-2.5 bg-slate-50 rounded-xl hover:bg-indigo-600 hover:text-white transition-all text-slate-600 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-indigo-500/20"><Github size={20} /></a>
-              <a href="#" className="p-2.5 bg-slate-50 rounded-xl hover:bg-indigo-600 hover:text-white transition-all text-slate-600 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-indigo-500/20"><Twitter size={20} /></a>
-              <a href="#" className="p-2.5 bg-slate-50 rounded-xl hover:bg-indigo-600 transition-all text-slate-600 shadow-sm border border-slate-100 hover:shadow-lg hover:shadow-indigo-500/20"><Linkedin size={20} /></a>
-            </div>
+            <h3 className="text-slate-900 font-bold mb-6">{t('footer.contact')}</h3>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3">
+                <div className="p-2 bg-slate-50 rounded-lg text-indigo-600 border border-slate-100">
+                  <Mail size={16} />
+                </div>
+                <a href={`mailto:${t('footer.email')}`} className="text-sm hover:text-indigo-600 transition-colors">
+                  {t('footer.email')}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="p-2 bg-slate-50 rounded-lg text-indigo-600 border border-slate-100">
+                  <Phone size={16} />
+                </div>
+                <a href={`tel:${t('footer.phone').replace(/[^0-9+]/g, '')}`} className="text-sm hover:text-indigo-600 transition-colors">
+                  {t('footer.phone')}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="p-2 bg-slate-50 rounded-lg text-indigo-600 border border-slate-100 mt-0.5">
+                  <MapPin size={16} />
+                </div>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t('footer.address'))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-indigo-600 transition-colors"
+                >
+                  {t('footer.address')}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="border-t border-slate-100 mt-16 pt-8 text-center text-xs text-slate-400 tracking-widest uppercase font-semibold">

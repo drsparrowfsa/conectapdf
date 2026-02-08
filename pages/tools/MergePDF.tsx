@@ -3,7 +3,7 @@ import { Merge, Download, Loader2, CheckCircle, AlertCircle, ArrowLeft } from 'l
 import { PDFDocument } from 'pdf-lib';
 import MultiDropzone from '../../components/MultiDropzone';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import BackButton from '../../components/BackButton';
 
 const MergePDF: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -70,13 +70,7 @@ const MergePDF: React.FC = () => {
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
-                    <Link
-                        to="/ferramentas"
-                        className={`inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-bold transition-colors mb-4 group ${isRtl ? 'flex-row-reverse' : ''}`}
-                    >
-                        <ArrowLeft size={18} className={`${isRtl ? 'rotate-180' : ''} group-hover:-translate-x-1 transition-transform`} />
-                        {t('placeholder.back')}
-                    </Link>
+                    <BackButton />
                     <div className="flex items-center gap-4 mb-2">
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Merge size={32} />
@@ -110,7 +104,8 @@ const MergePDF: React.FC = () => {
                                 className={`w-full h-16 rounded-2xl flex items-center justify-center gap-3 font-black text-xl transition-all shadow-xl 
                 ${files.length < 2 || loading
                                         ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:-translate-y-1 shadow-indigo-200 active:scale-95'}`}
+                                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:-translate-y-1 shadow-indigo-200 active:scale-95'
+                                    }`}
                             >
                                 {loading ? (
                                     <><Loader2 size={24} className="animate-spin" /> {t('merge.processing')}</>

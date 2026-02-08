@@ -60,6 +60,10 @@ export const resources = {
                 allTools: "Todas Ferramentas",
                 about: "Sobre Nós",
                 contact: "Contato",
+                email: "info@conectapdf.com",
+                phone: "+55 84 9 9696-3103",
+                whatsapp: "WhatsApp",
+                address: "Feira de Santana, BA - Brasil",
                 social: "Social",
                 copyright: "© {{year}} ConectaPDF. Inteligência para seus documentos."
             },
@@ -492,6 +496,10 @@ export const resources = {
                 allTools: "All Tools",
                 about: "About Us",
                 contact: "Contact",
+                email: "info@conectapdf.com",
+                phone: "+55 84 9 9696-3103",
+                whatsapp: "WhatsApp",
+                address: "Feira de Santana, BA - Brazil",
                 social: "Social",
                 copyright: "© {{year}} ConectaPDF. Intelligence for your documents."
             },

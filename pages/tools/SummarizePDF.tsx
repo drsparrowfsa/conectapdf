@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { FileText, Wand2, Loader2, AlertCircle, Copy, CheckCircle, ArrowLeft, Brain, Clock, Target, Shield } from 'lucide-react';
+import { FileText, Wand2, Loader2, AlertCircle, Copy, CheckCircle, Brain, Clock, Target, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Dropzone from '../../components/Dropzone';
 import { geminiService, SummaryType } from '../../services/geminiService';
 import * as pdfjsLib from 'pdfjs-dist';
+import BackButton from '../../components/BackButton';
 
 // Configure worker
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
@@ -98,13 +99,7 @@ const SummarizePDF: React.FC = () => {
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
-                    <Link
-                        to="/ferramentas"
-                        className={`inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-bold transition-colors mb-4 group ${isRtl ? 'flex-row-reverse' : ''}`}
-                    >
-                        <ArrowLeft size={18} className={`${isRtl ? 'rotate-180' : ''} group-hover:-translate-x-1 transition-transform`} />
-                        {t('placeholder.back')}
-                    </Link>
+                    <BackButton />
                     <div className="flex items-center gap-4 mb-2">
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <FileText size={32} />

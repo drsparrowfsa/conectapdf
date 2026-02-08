@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Scissors, Download, Loader2, CheckCircle, AlertCircle, ArrowLeft, FileText, Hash, List, Columns4 } from 'lucide-react';
+import { Scissors, FileText, Hash, List, Columns4, Loader2, CheckCircle, AlertCircle, Download } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
 import Dropzone from '../../components/Dropzone';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import BackButton from '../../components/BackButton';
 
 type SplitMode = 'pages' | 'range' | 'specific';
 
@@ -146,13 +146,7 @@ const SplitPDF: React.FC = () => {
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
-                    <Link
-                        to="/ferramentas"
-                        className={`inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-bold transition-colors mb-4 group ${isRtl ? 'flex-row-reverse' : ''}`}
-                    >
-                        <ArrowLeft size={18} className={`${isRtl ? 'rotate-180' : ''} group-hover:-translate-x-1 transition-transform`} />
-                        {t('placeholder.back')}
-                    </Link>
+                    <BackButton />
                     <div className="flex items-center gap-4 mb-2">
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Scissors size={32} />
@@ -189,7 +183,8 @@ const SplitPDF: React.FC = () => {
                                                 className={`p-6 rounded-2xl border-2 transition-all text-left flex flex-col gap-3 group
                         ${mode === m
                                                         ? 'border-indigo-600 bg-indigo-50/50 shadow-lg shadow-indigo-100'
-                                                        : 'border-slate-100 hover:border-slate-200 bg-white'}`}
+                                                        : 'border-slate-100 hover:border-slate-200 bg-white'
+                                                    }`}
                                             >
                                                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors
                         ${mode === m ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
@@ -275,7 +270,8 @@ const SplitPDF: React.FC = () => {
                                 className={`w-full h-16 rounded-2xl flex items-center justify-center gap-3 font-black text-xl transition-all shadow-xl 
                 ${!file || loading
                                         ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:-translate-y-1 shadow-indigo-200 active:scale-95'}`}
+                                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:-translate-y-1 shadow-indigo-200 active:scale-95'
+                                    }`}
                             >
                                 {loading ? (
                                     <><Loader2 className="animate-spin" /> {t('split.processing')}</>
