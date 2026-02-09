@@ -4,6 +4,8 @@ import { PDFDocument } from 'pdf-lib';
 import MultiDropzone from '../../components/MultiDropzone';
 import { useTranslation } from 'react-i18next';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
 
 const MergePDF: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -38,7 +40,7 @@ const MergePDF: React.FC = () => {
             setComplete(true);
         } catch (err) {
             console.error('Error merging PDFs:', err);
-            setError(t('merge.error'));
+            toast.error(t('merge.error'));
         } finally {
             setLoading(false);
         }
@@ -67,6 +69,11 @@ const MergePDF: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('merge.title')} - ConectaPDF`}
+                description={t('merge.description')}
+                url="https://conectapdf.com/merge-pdf"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
@@ -117,7 +124,7 @@ const MergePDF: React.FC = () => {
                     ) : (
                         <div className="p-8 text-center animate-in zoom-in-95 duration-500 space-y-8">
                             <div className="max-w-md mx-auto">
-                                <div className="bg-indigo-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                                <div className="bg-indigo-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 mx-auto">
                                     <Merge className="text-white" size={32} />
                                 </div>
                                 <h2 className="text-3xl font-black text-slate-900 mb-4">{t('merge.success')}</h2>

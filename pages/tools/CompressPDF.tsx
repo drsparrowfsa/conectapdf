@@ -1,11 +1,20 @@
 
 import React, { useState } from 'react';
-import { Minimize2, Download, Loader2, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Minimize2, Download, Loader2, CheckCircle, AlertCircle, Settings } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
 import MultiDropzone from '../../components/MultiDropzone';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
+import * as pdfjsLib from 'pdfjs-dist';
+import { setupPdfWorker } from '../../utils/pdfWorker';
+
+// Configure worker
+setupPdfWorker();
+
+type CompressionLevel = 'low' | 'medium' | 'high';
 
 const CompressPDF: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -13,25 +22,80 @@ const CompressPDF: React.FC = () => {
     const [files, setFiles] = useState<File[]>([]);
     const [isProcessing, setIsProcessing] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [compressionLevel, setCompressionLevel] = useState<CompressionLevel>('medium');
+    const [progress, setProgress] = useState(0);
+
+    const getCompressionQuality = (level: CompressionLevel) => {
+        switch (level) {
+            case 'low': return 0.7; // Better quality, less compression
+            case 'medium': return 0.5; // Balanced
+            case 'high': return 0.3; // Maximum compression, lower quality
+            default: return 0.5;
+        }
+    };
 
     const handleCompress = async () => {
         if (files.length === 0) return;
 
         setIsProcessing(true);
-        setError(null);
+        setProgress(0);
+        setIsSuccess(false);
 
         try {
-            for (const file of files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
                 const arrayBuffer = await file.arrayBuffer();
-                const pdfDoc = await PDFDocument.load(arrayBuffer);
 
-                // Simple optimization: saving the document often reduces size 
-                // by removing unused objects and optimizing the internal structure.
-                const pdfBytes = await pdfDoc.save();
+                // Load PDF with PDF.js to render pages
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                const newPdfDoc = await PDFDocument.create();
+                const totalPages = pdf.numPages;
 
+                const quality = getCompressionQuality(compressionLevel);
+
+                for (let j = 1; j <= totalPages; j++) {
+                    const page = await pdf.getPage(j);
+                    const viewport = page.getViewport({ scale: 1.5 }); // Reasonable scale for readability
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    if (!context) throw new Error('Failed to create canvas context');
+
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport,
+                        canvas: canvas
+                    }).promise;
+
+                    // Compress to JPEG
+                    const imageBlob = await new Promise<Blob | null>(resolve =>
+                        canvas.toBlob(resolve, 'image/jpeg', quality)
+                    );
+
+                    if (!imageBlob) throw new Error('Failed to compress page');
+
+                    const imageBytes = await imageBlob.arrayBuffer();
+                    const embeddedImage = await newPdfDoc.embedJpg(imageBytes);
+
+                    const newPage = newPdfDoc.addPage([viewport.width, viewport.height]);
+                    newPage.drawImage(embeddedImage, {
+                        x: 0,
+                        y: 0,
+                        width: viewport.width,
+                        height: viewport.height,
+                    });
+
+                    // Update progress (per page estimation)
+                    setProgress(Math.round(((i * totalPages + j) / (files.length * totalPages)) * 100));
+                }
+
+                const pdfBytes = await newPdfDoc.save();
                 const blob = new Blob([pdfBytes as any], { type: 'application/pdf' });
                 const url = URL.createObjectURL(blob);
+
                 const link = document.createElement('a');
                 link.href = url;
                 link.download = `comprimido_${file.name}`;
@@ -40,25 +104,32 @@ const CompressPDF: React.FC = () => {
                 document.body.removeChild(link);
                 URL.revokeObjectURL(url);
             }
+
             setIsSuccess(true);
+            toast.success(t('compress.success', 'Arquivos comprimidos com sucesso!'));
         } catch (err) {
             console.error('Error compressing PDF:', err);
-            setError(t('compress.error'));
+            toast.error(t('compress.error'));
         } finally {
             setIsProcessing(false);
+            setProgress(0);
         }
     };
 
     const reset = () => {
         setFiles([]);
         setIsSuccess(false);
-        setError(null);
+        setProgress(0);
     };
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('compress.title')} - ConectaPDF`}
+                description={t('compress.description')}
+                url="https://conectapdf.com/compress-pdf"
+            />
             <div className="max-w-4xl mx-auto">
-                {/* Header */}
                 <div className="mb-8">
                     <BackButton />
                     <div className="flex items-center gap-4 mb-2">
@@ -81,61 +152,69 @@ const CompressPDF: React.FC = () => {
                                 accept="application/pdf"
                             />
 
-                            {error && (
-                                <div className="mt-6 p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600">
-                                    <AlertCircle size={20} />
-                                    <p className="font-medium">{error}</p>
+                            {/* Compression Level Selector */}
+                            {files.length > 0 && (
+                                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    {(['low', 'medium', 'high'] as const).map((level) => (
+                                        <button
+                                            key={level}
+                                            onClick={() => setCompressionLevel(level)}
+                                            className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2
+                                                ${compressionLevel === level
+                                                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
+                                                    : 'border-slate-200 hover:border-indigo-300 text-slate-600'}`}
+                                        >
+                                            <Settings size={24} className={compressionLevel === level ? 'text-indigo-600' : 'text-slate-400'} />
+                                            <span className="font-bold capitalize">{t(`compress.level.${level}`, level)}</span>
+                                            <span className="text-xs text-center opacity-80">
+                                                {level === 'low' && t('compress.qualityHigh', 'Qualidade Alta')}
+                                                {level === 'medium' && t('compress.qualityBalanced', 'Balanceado')}
+                                                {level === 'high' && t('compress.qualityLow', 'Compactação Máxima')}
+                                            </span>
+                                        </button>
+                                    ))}
                                 </div>
                             )}
 
                             <button
                                 onClick={handleCompress}
                                 disabled={files.length === 0 || isProcessing}
-                                className={`
-                                    w-full h-16 rounded-2xl flex items-center justify-center gap-3 font-black text-xl transition-all shadow-xl mt-8
-                                    ${files.length > 0 && !isProcessing
-                                        ? 'bg-indigo-600 text-white hover:bg-indigo-700 hover:-translate-y-1 shadow-indigo-200 active:scale-95'
-                                        : 'bg-slate-100 text-slate-400 cursor-not-allowed'}
-                                `}
+                                className={`w-full mt-8 h-16 rounded-2xl flex items-center justify-center gap-3 font-black text-xl transition-all shadow-xl 
+                                    ${files.length === 0 || isProcessing
+                                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:-translate-y-1 shadow-indigo-200 active:scale-95'
+                                    }`}
                             >
                                 {isProcessing ? (
-                                    <>
-                                        <Loader2 size={24} className="animate-spin" />
-                                        {t('compress.processing')}
-                                    </>
+                                    <><Loader2 size={24} className="animate-spin" /> {t('compress.processing')} {progress > 0 && `${progress}%`}</>
                                 ) : (
-                                    <>
-                                        <Minimize2 size={24} />
-                                        {t('compress.compressButton')}
-                                    </>
+                                    <><Minimize2 size={24} /> {t('compress.compressButton')}</>
                                 )}
                             </button>
                         </div>
                     ) : (
-                        <div className="p-12 text-center">
-                            <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <CheckCircle size={40} />
+                        <div className="p-8 text-center animate-in zoom-in-95 duration-500 space-y-8">
+                            <div className="max-w-md mx-auto">
+                                <div className="bg-indigo-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 mx-auto">
+                                    <CheckCircle className="text-white" size={32} />
+                                </div>
+                                <h2 className="text-3xl font-black text-slate-900 mb-4">{t('compress.success')}</h2>
+                                <p className="text-slate-500 font-medium text-lg mb-10">{t('compress.successDescription', 'Seus arquivos foram comprimidos com sucesso!')}</p>
                             </div>
-                            <h2 className="text-3xl font-bold text-slate-900 mb-2">
-                                {t('compress.success')}
-                            </h2>
-                            <p className="text-slate-500 mb-8 max-w-md mx-auto">
-                                Seus arquivos foram processados e o download deve começar automaticamente.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <button
-                                    onClick={reset}
-                                    className="w-full sm:w-auto px-8 py-4 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 transition-colors"
-                                >
-                                    {t('compress.another')}
-                                </button>
-                                <Link
-                                    to="/ferramentas"
-                                    className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all hover:shadow-lg hover:shadow-indigo-200"
-                                >
-                                    Voltar para Hub
-                                </Link>
-                            </div>
+
+                            <button
+                                onClick={reset}
+                                className="w-full h-16 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center gap-3 font-bold text-xl hover:bg-slate-200 transition-colors"
+                            >
+                                <Minimize2 size={24} /> {t('compress.compressMore', 'Comprimir mais arquivos')}
+                            </button>
+
+                            <Link
+                                to="/ferramentas"
+                                className="block w-full text-center py-4 text-indigo-600 font-bold hover:underline"
+                            >
+                                Voltar para Hub
+                            </Link>
                         </div>
                     )}
                 </div>

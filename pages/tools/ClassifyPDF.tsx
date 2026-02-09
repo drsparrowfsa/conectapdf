@@ -25,10 +25,12 @@ import Dropzone from '../../components/Dropzone';
 import { geminiService } from '../../services/geminiService';
 import * as pdfjsLib from 'pdfjs-dist';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { setupPdfWorker } from '../../utils/pdfWorker';
+import { toast } from 'sonner';
 
 // Configure worker
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+setupPdfWorker();
 
 type Category = {
     type: string;
@@ -123,7 +125,7 @@ const ClassifyPDF: React.FC = () => {
             setResult(classification);
         } catch (err: any) {
             console.error('Classification error:', err);
-            setError(err.message || 'Erro ao classificar documento.');
+            toast.error(err.message || 'Erro ao classificar documento.');
         } finally {
             setLoading(false);
             setLoadingStage(null);
@@ -149,6 +151,11 @@ const ClassifyPDF: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('classify.title')} - ConectaPDF`}
+                description={t('classify.subtitle')}
+                url="https://conectapdf.com/classify-pdf"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">

@@ -89,8 +89,8 @@ const MultiDropzone: React.FC<MultiDropzoneProps> = ({ files, onFilesChange, acc
                 <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Upload className="text-indigo-600 w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">{t('merge.dropzoneTitle')}</h3>
-                <p className="text-slate-500 mt-2 font-medium">{t('merge.dropzoneSubtitle')}</p>
+                <h3 className="text-xl font-bold text-slate-900 text-center">{t('merge.dropzoneTitle')}</h3>
+                <p className="text-slate-500 mt-2 font-medium text-center">{t('merge.dropzoneSubtitle')}</p>
             </div>
 
             {files.length > 0 && (

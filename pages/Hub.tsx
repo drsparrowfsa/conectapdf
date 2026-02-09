@@ -6,6 +6,7 @@ import { TOOLS } from '../constants';
 import { ToolCategory } from '../types';
 import ToolCard from '../components/ToolCard';
 import { motion } from 'framer-motion';
+import Seo from '../components/Seo';
 
 import { useTranslation } from 'react-i18next';
 
@@ -54,6 +55,11 @@ const Hub: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 py-16 px-4">
+      <Seo
+        title={t('hub.seoTitle', 'Ferramentas PDF Gratuitas - ConectaPDF')}
+        description={t('hub.seoDescription', 'Converta, edite e gerencie seus PDFs online gratuitamente. Ferramentas fáceis de usar para unir, dividir, comprimir e converter PDFs.')}
+        url="https://conectapdf.com/tools"
+      />
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-extrabold text-slate-900 mb-4">{t('hub.title')}</h1>

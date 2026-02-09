@@ -6,6 +6,7 @@ import { FEATURES, TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
 import Hero from '../components/ui/neural-network-hero';
 import Testimonials from '../components/Testimonials';
+import Seo from '../components/Seo';
 
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +15,10 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col">
+      <Seo
+        title="ConectaPDF - Ferramentas de PDF e Imagem com IA"
+        description="A plataforma definitiva para manipulação inteligente de documentos. Converta PDFs, extraia dados de tabelas e otimize imagens com IA."
+      />
       {/* Neural Network Hero Section */}
       <Hero
         title={t('hero.title')}

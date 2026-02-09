@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="currentColor"
+   fill-rule="evenodd"
+   height="81"
+   style="line-height:1"
+   viewBox="0 0 84 81"
+   width="84"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="github.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="8.4895833"
+     inkscape:cx="16.785276"
+     inkscape:cy="35.396319"
+     inkscape:window-width="2560"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">Github</title>
+  <path
+     d="m 42.000004,0.49999985 c 23.061294,0 41.739899,18.35164215 41.739899,41.00945115 -0.0035,17.624673 -11.443689,33.277135 -28.435306,38.912022 -2.086995,0.410442 -2.869619,-0.869582 -2.869619,-1.947862 0,-1.384374 0.05218,-5.791411 0.05218,-11.27673 0,-3.843549 -1.304372,-6.306203 -2.817443,-7.586227 9.287128,-1.026106 19.043829,-4.511387 19.043829,-20.250808 0,-4.511387 -1.617421,-8.153193 -4.278339,-11.022811 0.417399,-1.026106 1.878295,-5.227923 -0.417399,-10.869766 0,0 -3.495717,-1.126977 -11.478473,4.205295 a 39.374639,39.374639 0 0 0 -10.43498,-1.384373 c -3.547891,0 -7.095783,0.462617 -10.434975,1.384373 -7.982755,-5.280097 -11.478472,-4.205295 -11.478472,-4.205295 -2.295694,5.641843 -0.834798,9.84366 -0.417399,10.869766 -2.660919,2.869618 -4.27834,6.563599 -4.27834,11.022811 0,15.687246 9.704527,19.224702 18.991655,20.250808 -1.200022,1.022628 -2.295695,2.817444 -2.660919,5.485319 -2.400044,1.078281 -8.400155,2.817443 -12.156746,-3.38441 -0.782623,-1.231327 -3.130492,-4.253992 -6.417509,-4.205295 -3.4957168,0.05217 -1.408722,1.947862 0.05218,2.716572 1.773945,0.973931 3.808765,4.615737 4.278339,5.794889 0.834798,2.306129 3.547892,6.713167 14.035042,4.81748 0,3.436585 0.05217,6.664471 0.05217,7.638402 0,1.07828 -0.782623,2.309607 -2.869618,1.947862 C 11.749011,74.845718 0.2496691,59.168907 0.26010408,41.51293 0.26010408,18.851642 18.938709,0.49999985 42.000004,0.49999985 Z"
+     id="path1"
+     style="stroke-width:3.47832" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Github</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

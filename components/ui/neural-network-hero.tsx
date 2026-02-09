@@ -271,6 +271,15 @@ export default function Hero({
                         <a
                             key={index}
                             href={button.href}
+                            onClick={(e) => {
+                                if (button.href.startsWith('#')) {
+                                    e.preventDefault();
+                                    const element = document.querySelector(button.href);
+                                    if (element) {
+                                        element.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                }
+                            }}
                             className={`rounded-2xl px-10 py-5 text-sm font-semibold tracking-tight transition-all duration-300 transform active:scale-95 border border-white/10 ${button.primary
                                 ? "bg-indigo-600 text-white hover:bg-indigo-500 shadow-xl shadow-indigo-500/20"
                                 : "bg-white/5 text-white/90 backdrop-blur-xl hover:bg-white/10"

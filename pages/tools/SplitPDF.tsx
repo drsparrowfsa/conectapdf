@@ -4,6 +4,8 @@ import { PDFDocument } from 'pdf-lib';
 import Dropzone from '../../components/Dropzone';
 import { useTranslation } from 'react-i18next';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
 
 type SplitMode = 'pages' | 'range' | 'specific';
 
@@ -128,7 +130,7 @@ const SplitPDF: React.FC = () => {
             setComplete(true);
         } catch (err: any) {
             console.error('Error splitting PDF:', err);
-            setError(err.message || t('split.error'));
+            toast.error(err.message || t('split.error'));
         } finally {
             setLoading(false);
         }
@@ -143,6 +145,11 @@ const SplitPDF: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('split.title')} - ConectaPDF`}
+                description={t('split.description')}
+                url="https://conectapdf.com/split-pdf"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">

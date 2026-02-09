@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import { useTranslation } from 'react-i18next';
 import Dropzone from '../../components/Dropzone';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
 
 type ResizeMode = 'none' | 'percentage' | 'fixed' | 'preset';
 
@@ -206,7 +208,7 @@ const ImageConverter: React.FC = () => {
         setProgress(Math.round(((i + 1) / files.length) * 100));
       } catch (err) {
         console.error('Error processing file:', files[i].name, err);
-        setError(t('common.error'));
+        toast.error(t('common.error'));
       }
     }
 
@@ -235,6 +237,11 @@ const ImageConverter: React.FC = () => {
 
   return (
     <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+      <Seo
+        title={`${t('imageConverter.title')} - ConectaPDF`}
+        description={t('imageConverter.subtitle')}
+        url="https://conectapdf.com/image-converter"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">

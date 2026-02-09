@@ -20,10 +20,12 @@ import { geminiService } from '../../services/geminiService';
 import * as pdfjsLib from 'pdfjs-dist';
 import { jsPDF } from 'jspdf';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { setupPdfWorker } from '../../utils/pdfWorker';
+import { toast } from 'sonner';
 
 // Configure worker
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+setupPdfWorker();
 
 const TranslatePDF: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -100,7 +102,7 @@ const TranslatePDF: React.FC = () => {
             setResult(translated);
         } catch (err: any) {
             console.error('Translation error:', err);
-            setError(err.message || 'Erro ao traduzir documento.');
+            toast.error(err.message || 'Erro ao traduzir documento.');
         } finally {
             setLoading(false);
             setLoadingStage(null);
@@ -157,6 +159,11 @@ const TranslatePDF: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('translate.title')} - ConectaPDF`}
+                description={t('translate.subtitle')}
+                url="https://conectapdf.com/translate-pdf"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">

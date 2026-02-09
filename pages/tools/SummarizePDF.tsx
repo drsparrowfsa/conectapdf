@@ -6,10 +6,12 @@ import Dropzone from '../../components/Dropzone';
 import { geminiService, SummaryType } from '../../services/geminiService';
 import * as pdfjsLib from 'pdfjs-dist';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { setupPdfWorker } from '../../utils/pdfWorker';
+import { toast } from 'sonner';
 
 // Configure worker
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+setupPdfWorker();
 
 const SummarizePDF: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -80,7 +82,7 @@ const SummarizePDF: React.FC = () => {
             setResult(summary);
         } catch (err: any) {
             console.error('Summarize error:', err);
-            setError(err.message || t('common.error'));
+            toast.error(err.message || t('common.error'));
         } finally {
             setLoading(false);
             setLoadingStage(null);
@@ -96,6 +98,11 @@ const SummarizePDF: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('aiSummary.title')} - ConectaPDF`}
+                description={t('aiSummary.subtitle')}
+                url="https://conectapdf.com/ai-summary"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">

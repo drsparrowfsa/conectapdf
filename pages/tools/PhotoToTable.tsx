@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Table, Wand2, Loader2, AlertCircle, Copy, Download, Cpu, Activity, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import Dropzone from '../../components/Dropzone';
 import { geminiService } from '../../services/geminiService';
@@ -34,14 +36,14 @@ const PhotoToTable: React.FC = () => {
           const markdown = await geminiService.extractTableFromImage(base64, selectedFile.type);
           setResult(markdown);
         } catch (err: any) {
-          setError(err.message || t('common.error'));
+          toast.error(err.message || t('common.error'));
         } finally {
           setLoading(false);
         }
       };
       reader.readAsDataURL(selectedFile);
     } catch (err) {
-      setError(t('common.error'));
+      toast.error(t('common.error'));
       setLoading(false);
     }
   };
@@ -55,6 +57,11 @@ const PhotoToTable: React.FC = () => {
 
   return (
     <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+      <Seo
+        title={`${t('photoToTable.title')} - ConectaPDF`}
+        description={t('photoToTable.subtitle')}
+        url="https://conectapdf.com/photo-to-table"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">

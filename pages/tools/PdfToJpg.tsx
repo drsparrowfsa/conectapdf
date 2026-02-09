@@ -7,10 +7,12 @@ import Dropzone from '../../components/Dropzone';
 import { useTranslation } from 'react-i18next';
 import * as pdfjsLib from 'pdfjs-dist';
 import JSZip from 'jszip';
+import Seo from '../../components/Seo';
+import { setupPdfWorker } from '../../utils/pdfWorker';
+import { toast } from 'sonner';
 
 // Configure worker
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+setupPdfWorker();
 
 const PdfToJpg: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -82,7 +84,7 @@ const PdfToJpg: React.FC = () => {
 
     } catch (err) {
       console.error('Error converting PDF:', err);
-      setError(t('pdfToJpg.error'));
+      toast.error(t('pdfToJpg.error'));
     } finally {
       setLoading(false);
     }
@@ -111,6 +113,11 @@ const PdfToJpg: React.FC = () => {
 
   return (
     <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+      <Seo
+        title={`${t('pdfToJpg.title')} - ConectaPDF`}
+        description={t('pdfToJpg.description')}
+        url="https://conectapdf.com/pdf-to-jpg"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">

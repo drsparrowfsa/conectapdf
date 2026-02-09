@@ -26,10 +26,12 @@ import Dropzone from '../../components/Dropzone';
 import { geminiService } from '../../services/geminiService';
 import * as pdfjsLib from 'pdfjs-dist';
 import BackButton from '../../components/BackButton';
+import Seo from '../../components/Seo';
+import { setupPdfWorker } from '../../utils/pdfWorker';
+import { toast } from 'sonner';
 
 // Configure worker
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+setupPdfWorker();
 
 type ExtractionType = 'emails' | 'phones' | 'dates' | 'numbers' | 'addresses' | 'names';
 
@@ -109,7 +111,7 @@ const DataExtraction: React.FC = () => {
             setResult(data);
         } catch (err: any) {
             console.error('Extraction error:', err);
-            setError(err.message || t('common.error'));
+            toast.error(err.message || t('common.error'));
         } finally {
             setLoading(false);
             setLoadingStage(null);
@@ -164,6 +166,11 @@ const DataExtraction: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('dataExtraction.title')} - ConectaPDF`}
+                description={t('dataExtraction.subtitle')}
+                url="https://conectapdf.com/data-extraction"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">

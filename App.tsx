@@ -19,6 +19,7 @@ import TranslatePDF from './pages/tools/TranslatePDF';
 import ClassifyPDF from './pages/tools/ClassifyPDF';
 import ContractGenerator from './pages/tools/ContractGenerator';
 import ToolPlaceholder from './pages/ToolPlaceholder';
+import { Toaster } from './components/ui/sonner';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -68,6 +69,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
+        <Toaster />
       </div>
     </Router>
   );

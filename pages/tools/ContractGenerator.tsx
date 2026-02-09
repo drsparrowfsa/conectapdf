@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
 import {
     FileSignature,
     Wand2,
@@ -89,7 +91,7 @@ const ContractGenerator: React.FC = () => {
             setResult(contract);
         } catch (err: any) {
             console.error('Contract generation error:', err);
-            setError(err.message || 'Erro ao gerar contrato.');
+            toast.error(err.message || 'Erro ao gerar contrato.');
         } finally {
             setLoading(false);
         }
@@ -165,6 +167,11 @@ const ContractGenerator: React.FC = () => {
 
     return (
         <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+            <Seo
+                title={`${t('contractGenerator.title')} - ConectaPDF`}
+                description={t('contractGenerator.subtitle')}
+                url="https://conectapdf.com/contract-generator"
+            />
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">

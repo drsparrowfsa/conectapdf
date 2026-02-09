@@ -3,6 +3,8 @@ import { RefreshCw, ArrowRightLeft, TrendingUp, ChevronDown, Coins, Zap } from '
 import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import { useTranslation } from 'react-i18next';
+import Seo from '../../components/Seo';
+import { toast } from 'sonner';
 
 const currencies = [
   // ... (keep the same currencies array)
@@ -65,6 +67,7 @@ const CurrencyConverter: React.FC = () => {
       }
     } catch (error) {
       console.error('Error fetching exchange rates:', error);
+      toast.error(t('currency.error'));
     } finally {
       setLoading(false);
     }
@@ -82,6 +85,11 @@ const CurrencyConverter: React.FC = () => {
 
   return (
     <div className={`min-h-screen bg-slate-50 pt-16 pb-16 px-4 ${isRtl ? 'font-hebrew' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+      <Seo
+        title={`${t('currency.title')} - ConectaPDF`}
+        description={t('currency.subtitle')}
+        url="https://conectapdf.com/currency-converter"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
