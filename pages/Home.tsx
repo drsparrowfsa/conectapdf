@@ -26,7 +26,7 @@ const Home: React.FC = () => {
         badgeText={t('hero.badgeText')}
         badgeLabel={t('hero.badge')}
         ctaButtons={[
-          { text: t('hero.ctaTools'), href: "#ferramentas", primary: true },
+          { text: t('hero.ctaTools'), href: "#secao-ferramentas", primary: true },
           { text: t('hero.ctaWork'), href: "#como-funciona" }
         ]}
         microDetails={[
@@ -70,15 +70,15 @@ const Home: React.FC = () => {
         </section>
 
         {/* Tools Hub Preview */}
-        <section id="ferramentas" className="py-32 bg-slate-50">
+        <section id="secao-ferramentas" className="py-32 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 lg:mb-16 gap-10 lg:gap-8">
               <div className="max-w-2xl">
                 <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm mb-4 block">{t('hubPreview.badge')}</span>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">{t('hubPreview.title')}</h2>
                 <p className="text-xl text-slate-600">{t('hubPreview.subtitle')}</p>
               </div>
-              <Link to="/ferramentas" className="group bg-indigo-50 text-indigo-700 px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-indigo-600 hover:text-white transition-all duration-300">
+              <Link to="/ferramentas" className="group bg-indigo-50 text-indigo-700 px-6 py-3 rounded-full font-bold flex items-center justify-center lg:justify-start gap-2 hover:bg-indigo-600 hover:text-white transition-all duration-300 w-full sm:w-auto">
                 {t('hubPreview.viewAll')} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

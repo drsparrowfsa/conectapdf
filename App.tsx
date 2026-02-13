@@ -20,6 +20,7 @@ import ClassifyPDF from './pages/tools/ClassifyPDF';
 import ContractGenerator from './pages/tools/ContractGenerator';
 import ToolPlaceholder from './pages/ToolPlaceholder';
 import { Toaster } from './components/ui/sonner';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -69,6 +70,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTopButton />
         <Toaster />
       </div>
     </Router>

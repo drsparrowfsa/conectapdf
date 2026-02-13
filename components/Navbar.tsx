@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, 300);
     }
   };
 
@@ -40,13 +40,19 @@ const Navbar: React.FC = () => {
           </Link>
           <div className="flex items-center gap-2 sm:gap-6">
             <div className="hidden md:flex items-center gap-6">
-              <Link to="/ferramentas" className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">{t('navbar.tools')}</Link>
               <a
-                href="#como-funciona"
+                href="/"
                 onClick={(e) => handleAnchorClick(e, 'como-funciona')}
                 className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
               >
                 {t('navbar.howItWorks')}
+              </a>
+              <a
+                href="/"
+                onClick={(e) => handleAnchorClick(e, 'secao-ferramentas')}
+                className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
+              >
+                {t('navbar.tools')}
               </a>
             </div>
 
