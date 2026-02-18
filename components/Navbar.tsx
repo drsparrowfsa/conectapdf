@@ -41,14 +41,14 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-2 sm:gap-6">
             <div className="hidden md:flex items-center gap-6">
               <a
-                href="/"
+                href="#como-funciona"
                 onClick={(e) => handleAnchorClick(e, 'como-funciona')}
                 className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
               >
                 {t('navbar.howItWorks')}
               </a>
               <a
-                href="/"
+                href="#secao-ferramentas"
                 onClick={(e) => handleAnchorClick(e, 'secao-ferramentas')}
                 className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
               >
