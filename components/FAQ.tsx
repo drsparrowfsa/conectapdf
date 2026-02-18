@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle, MessageCircle, Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { ChevronDown, MessageCircle, Sparkles, ShieldCheck, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const FAQItem: React.FC<{ question: string; answer: string; isOpen: boolean; onClick: () => void }> = ({
@@ -21,7 +21,7 @@ const FAQItem: React.FC<{ question: string; answer: string; isOpen: boolean; onC
                 onClick={onClick}
                 className="w-full px-8 py-6 flex items-center justify-between text-left group"
             >
-                <span className={`text-lg font-bold transition-colors duration-300 ${isOpen ? 'text-indigo-600' : 'text-slate-800'
+                <span className={`text-xl font-bold transition-colors duration-300 ${isOpen ? 'text-indigo-600' : 'text-slate-800'
                     }`}>
                     {question}
                 </span>
@@ -47,7 +47,7 @@ const FAQItem: React.FC<{ question: string; answer: string; isOpen: boolean; onC
                     >
                         <div className="px-8 pb-8 pt-2">
                             <div className="h-px w-full bg-slate-100 mb-6" />
-                            <p className="text-slate-600 leading-relaxed text-lg">
+                            <p className="text-slate-600 leading-relaxed text-base">
                                 {answer}
                             </p>
                         </div>
@@ -88,14 +88,13 @@ const FAQ: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-bold text-sm mb-6">
-                                <HelpCircle size={18} />
+                            <span className="text-indigo-600 font-bold tracking-widest uppercase text-sm mb-4 block">
                                 {t('faq.badge')}
                             </span>
-                            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-[1.1] tracking-tight">
+                            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
                                 {t('faq.title')}
                             </h2>
-                            <p className="text-xl text-slate-600 mb-10 leading-relaxed">
+                            <p className="text-lg text-slate-600 mb-10 leading-relaxed">
                                 {t('faq.subtitle')}
                             </p>
 
