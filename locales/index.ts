@@ -433,6 +433,41 @@ export const resources = {
                 downloadPdf: "Baixar PDF",
                 downloadDocx: "Baixar DOCX",
                 disclaimer: "Este gerador cria um modelo simples sem validade jurídica garantida. Revise antes de usar."
+            },
+            faq: {
+                badge: "FAQ",
+                title: "Perguntas Frequentes",
+                subtitle: "Tudo o que você precisa saber sobre o ConectaPDF e como nossa tecnologia pode te ajudar.",
+                moreQuestions: "Ainda tem dúvidas?",
+                moreQuestionsDesc: "Nossa equipe de suporte está pronta para te ajudar com qualquer necessidade técnica ou comercial.",
+                contactUs: "Falar com suporte",
+                stats: {
+                    secure: "100% Seguro",
+                    instant: "Resultado Instantâneo",
+                    ai: "Potencializado por IA"
+                },
+                items: [
+                    {
+                        question: "O ConectaPDF é gratuito?",
+                        answer: "Sim, oferecemos ferramentas fundamentais de forma gratuita com processamento direto no seu navegador. Ferramentas avançadas que utilizam IA de ponta possuem um limite generoso de uso diário."
+                    },
+                    {
+                        question: "Meus arquivos e dados estão seguros?",
+                        answer: "Absolutamente. A privacidade é nosso pilar. A maioria das operações ocorre localmente no seu dispositivo. Para funções de IA, os dados são transmitidos via SSL criptografado e descartados imediatamente após o processamento."
+                    },
+                    {
+                        question: "Quais formatos são suportados além do PDF?",
+                        answer: "Além de PDF, suportamos os principais formatos de imagem como JPG, PNG e WEBP. Também exportamos dados extraídos para formatos estruturados como CSV e JSON."
+                    },
+                    {
+                        question: "Preciso baixar algum software ou criar conta?",
+                        answer: "Não. O ConectaPDF é 100% online e funciona direto no seu navegador. Você pode usar todas as ferramentas instantaneamente sem necessidade de instalação ou cadastro."
+                    },
+                    {
+                        question: "Como a IA consegue extrair dados de fotos?",
+                        answer: "Utilizamos modelos de visão computacional de última geração (Gemini Pro) que conseguem interpretar contextos, ler tabelas complexas e entender o layout de documentos mesmo em fotos com baixa qualidade."
+                    }
+                ]
             }
         }
     },
@@ -869,6 +904,41 @@ export const resources = {
                 downloadPdf: "Download PDF",
                 downloadDocx: "Download DOCX",
                 disclaimer: "This generator creates a simple template without guaranteed legal validity. Review before use."
+            },
+            faq: {
+                badge: "FAQ",
+                title: "Frequently Asked Questions",
+                subtitle: "Everything you need to know about ConectaPDF and how our technology can help you.",
+                moreQuestions: "Still have questions?",
+                moreQuestionsDesc: "Our support team is ready to help you with any technical or business needs.",
+                contactUs: "Talk to support",
+                stats: {
+                    secure: "100% Secure",
+                    instant: "Instant Result",
+                    ai: "AI Powered"
+                },
+                items: [
+                    {
+                        question: "Is ConectaPDF free?",
+                        answer: "Yes, we offer essential tools for free with direct processing in your browser. Advanced tools using cutting-edge AI have a generous daily usage limit."
+                    },
+                    {
+                        question: "Are my files and data secure?",
+                        answer: "Absolutely. Privacy is our pillar. Most operations occur locally on your device. For AI functions, data is transmitted via encrypted SSL and discarded immediately after processing."
+                    },
+                    {
+                        question: "What formats are supported besides PDF?",
+                        answer: "In addition to PDF, we support major image formats such as JPG, PNG, and WEBP. We also export extracted data to structured formats like CSV and JSON."
+                    },
+                    {
+                        question: "Do I need to download software or create an account?",
+                        answer: "No. ConectaPDF is 100% online and works directly in your browser. You can use all tools instantly without any installation or registration."
+                    },
+                    {
+                        question: "How does AI extract data from photos?",
+                        answer: "We use state-of-the-art computer vision models (Gemini Pro) that can interpret contexts, read complex tables, and understand document layouts even in low-quality photos."
+                    }
+                ]
             }
         }
     },
@@ -1294,6 +1364,41 @@ export const resources = {
                 downloadPdf: "Descargar PDF",
                 downloadDocx: "Descargar DOCX",
                 disclaimer: "Este generador crea un modelo simple sin validez legal garantizada. Revise antes de usar."
+            },
+            faq: {
+                badge: "FAQ",
+                title: "Preguntas Frequentes",
+                subtitle: "Todo lo que necesitas saber sobre ConectaPDF y cómo nuestra tecnología puede ayudarte.",
+                moreQuestions: "¿Aún tienes dudas?",
+                moreQuestionsDesc: "Nuestro equipo de soporte está listo para ayudarte con cualquier necesidad técnica o comercial.",
+                contactUs: "Hablar con soporte",
+                stats: {
+                    secure: "100% Seguro",
+                    instant: "Resultado Instantáneo",
+                    ai: "Potenciado por IA"
+                },
+                items: [
+                    {
+                        question: "¿Es ConectaPDF gratuito?",
+                        answer: "Sí, ofrecemos herramientas fundamentales de forma gratuita con procesamiento directo en tu navegador. Las herramientas avanzadas que utilizan IA de vanguardia tienen un límite generoso de uso diario."
+                    },
+                    {
+                        question: "¿Están seguros mis archivos y datos?",
+                        answer: "Absolutamente. La privacidad es nuestro pilar. La mayoría de las operaciones ocurren localmente en tu dispositivo. Para funciones de IA, los datos se transmiten vía SSL encriptado y se descartan inmediatamente después del procesamiento."
+                    },
+                    {
+                        question: "¿Qué formatos son compatibles además del PDF?",
+                        answer: "Además de PDF, soportamos los principales formatos de imagen como JPG, PNG y WEBP. También exportamos datos extraídos a formatos estructurados como CSV y JSON."
+                    },
+                    {
+                        question: "¿Necesito descargar software o crear una cuenta?",
+                        answer: "No. ConectaPDF es 100% online y funciona directamente en tu navegador. Puedes usar todas las herramientas instantáneamente sin necesidad de instalación o registro."
+                    },
+                    {
+                        question: "¿Cómo logra la IA extraer datos de fotos?",
+                        answer: "Utilizamos modelos de visión computacional de última generación (Gemini Pro) que logran interpretar contextos, leer tablas complejas y entender el diseño de documentos incluso en fotos de baja calidad."
+                    }
+                ]
             },
             placeholder: {
                 title: "Herramienta Próximamente",
@@ -1731,6 +1836,41 @@ export const resources = {
                 downloadPdf: "הורד PDF",
                 downloadDocx: "הורד DOCX",
                 disclaimer: "מחולל זה יוצר תבנית פשוטה ללא תוקף משפטי מובטח. יש לעיין לפני השימוש."
+            },
+            faq: {
+                badge: "FAQ",
+                title: "שאלות נפוצות",
+                subtitle: "כל מה שאתה צריך לדעת על ConectaPDF ואיך הטכנולוגיה שלנו יכולה לעזור לך.",
+                moreQuestions: "עדיין יש לך שאלות?",
+                moreQuestionsDesc: "צוות התמיכה שלנו מוכן לעזור לך בכל צורך טכני או עסקי.",
+                contactUs: "דבר עם התמיכה",
+                stats: {
+                    secure: "100% מאובטח",
+                    instant: "תוצאה מיידית",
+                    ai: "מבוסס AI"
+                },
+                items: [
+                    {
+                        question: "האם ConectaPDF הוא בחינם?",
+                        answer: "כן, אנו מציעים כלים בסיסיים בחינם עם עיבוד ישיר בדפדפן שלך. לכלים מתקדמים המשתמשים ב-AI חדיש יש מגבלת שימוש יומית נדיבה."
+                    },
+                    {
+                        question: "האם הקבצים והנתונים שלי מאובטחים?",
+                        answer: "בהחלט. פרטיות היא עמוד התווך שלנו. רוב הפעולות מתבצעות באופן מקומי במכשיר שלך. עבור פונקציות AI, הנתונים מועברים באמצעות SSL מוצפן ונמחקים מיד לאחר העיבוד."
+                    },
+                    {
+                        question: "אילו פורמטים נתמכים מלבד PDF?",
+                        answer: "בנוסף ל-PDF, אנו תומכים בפורמטי תמונה עיקריים כגון JPG, PNG ו-WEBP. אנו גם מייצאים נתונים שחולצו לפורמטים מובנים כמו CSV ו-JSON."
+                    },
+                    {
+                        question: "האם עלי להוריד תוכנה או ליצור חשבון?",
+                        answer: "לא. ConectaPDF הוא 100% מקוון ועובד ישירות בדפדפן שלך. אתה יכול להשתמש בכל הכלים באופן מיידי ללא כל התקנה או הרשמה."
+                    },
+                    {
+                        question: "איך AI מחלץ נתונים מתמונות?",
+                        answer: "אנו משתמשים במודלי ראייה ממוחשבת חדישים (Gemini Pro) שיכולים לפרש הקשרים, לקרוא טבלאות מורכבות ולהבין פריסות מסמכים גם בתמונות באיכות נמוכה."
+                    }
+                ]
             }
         }
     },
@@ -2159,6 +2299,41 @@ export const resources = {
                 downloadPdf: "تنزيل PDF",
                 downloadDocx: "تنزيل DOCX",
                 disclaimer: "يقوم هذا المولد بإنشاء نموذج بسيط دون ضمان صلاحية قانونية. يرجى المراجعة قبل الاستخدام."
+            },
+            faq: {
+                badge: "FAQ",
+                title: "الأسئلة الشائعة",
+                subtitle: "كل ما تحتاج لمعرفته حول ConectaPDF وكيف يمكن لتقنيتنا مساعدتك.",
+                moreQuestions: "هل لا تزال لديك أسئلة؟",
+                moreQuestionsDesc: "فريق الدعم لدينا جاهز لمساعدتك في أي احتياجات تقنية أو تجارية.",
+                contactUs: "تحدث إلى الدعم",
+                stats: {
+                    secure: "100% آمن",
+                    instant: "نتائج فورية",
+                    ai: "مدعوم بالذكاء الاصطناعي"
+                },
+                items: [
+                    {
+                        question: "هل ConectaPDF مجاني؟",
+                        answer: "نعم ، نحن نقدم أدوات أساسية مجاناً مع معالجة مباشرة في متصفحك. الأدوات المتقدمة التي تستخدم أحدث تقنيات الذכاء الاصطناعي لها حد استخدام يومي سخي."
+                    },
+                    {
+                        question: "هل ملفاتي وبياناتي آمنة؟",
+                        answer: "إطلاقاً. الخصوصية هي ركيزتنا. تحدث معظم العمليات محلياً على جهازك. بالنسبة لوظائف الذكاء الاصطناعي ، يتم نقل البيانات عبر SSL مشفر ويتم التخلص منها فوراً بعد المعالجة."
+                    },
+                    {
+                        question: "ما هي التنسيقات المدعومة إلى جانب PDF؟",
+                        answer: "بالإضافة إلى PDF ، ندعم تنسيقات الصور الرئيسية مثل JPG و PNG و WEBP. نقوم أيضاً بتصدير البيانات المستخرجة إلى تنسيقات منظمة مثل CSV و JSON."
+                    },
+                    {
+                        question: "هل أحتاج إلى تنزيل برنامج أو إنشاء حساب؟",
+                        answer: "لا. ConectaPDF متاح 100% عبر الإنترنت ويعمل مباشرة في متصفحك. يمكنك استخدام جميع الأدوات على الفور دون أي تثبيت أو تسجيل."
+                    },
+                    {
+                        question: "كيف يستخرج الذكاء الاصطناعي البيانات من الصور؟",
+                        answer: "نحن نستخدم أحدث نماذج رؤية الكمبيوتر (Gemini Pro) التي يمكنها تفسير السياقات وقراءة الجداول المعقدة وفهم تخطيطات المستندات حتى في الصور منخفضة الجودة."
+                    }
+                ]
             },
             placeholder: {
                 title: "أداة قريبا",

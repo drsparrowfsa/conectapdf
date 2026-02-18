@@ -6,8 +6,8 @@ import { FEATURES, TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
 import Hero from '../components/ui/neural-network-hero';
 import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
 import Seo from '../components/Seo';
-
 import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
@@ -111,12 +111,15 @@ const Home: React.FC = () => {
               <p className="text-slate-400 text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
                 {t('finalCta.subtitle')}
               </p>
-              <Link to="/ferramentas" className="inline-flex items-center gap-3 bg-indigo-600 text-white px-12 py-6 rounded-3xl text-xl font-bold hover:bg-indigo-500 hover:-translate-y-1 transition-all shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
+              <Link to="/ferramentas" className="inline-flex items-center gap-3 bg-indigo-600 text-white px-12 py-6 rounded-3xl text-xl font-bold hover:bg-indigo-600 hover:-translate-y-1 transition-all shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
                 {t('finalCta.button')} <Star size={24} />
               </Link>
             </motion.div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQ />
       </div>
     </div>
   );
