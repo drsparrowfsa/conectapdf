@@ -98,9 +98,9 @@ const CurrencyConverter: React.FC = () => {
             <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
               <RefreshCw size={32} />
             </div>
-            <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('currency.title')}</h1>
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('currency.title')}</h1>
           </div>
-          <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+          <p className="text-slate-600 text-base sm:text-lg">
             {t('currency.subtitle')}
           </p>
         </div>
@@ -175,7 +175,7 @@ const CurrencyConverter: React.FC = () => {
               </div>
             ) : (
               <div className="space-y-1">
-                <h2 className="text-5xl md:text-6xl font-black tracking-tighter animate-in fade-in zoom-in duration-500">
+                <h2 className="text-4xl md:text-6xl font-black tracking-tighter animate-in fade-in zoom-in duration-500">
                   {(amount * (rate || 0)).toLocaleString(i18n.language === 'pt' ? 'pt-BR' : i18n.language, {
                     style: 'currency',
                     currency: to,

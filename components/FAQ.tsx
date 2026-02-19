@@ -28,7 +28,7 @@ const FAQItem: React.FC<{ question: string; answer: string; isOpen: boolean; onC
                 <motion.div
                     animate={{
                         rotate: isOpen ? 180 : 0,
-                        backgroundColor: isOpen ? '#EEF2FF' : 'transparent',
+                        backgroundColor: isOpen ? 'rgba(238, 242, 255, 1)' : 'rgba(238, 242, 255, 0)',
                         color: isOpen ? '#4F46E5' : '#94A3B8'
                     }}
                     className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300"

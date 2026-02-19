@@ -21,6 +21,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 import { jsPDF } from 'jspdf';
 import BackButton from '../../components/BackButton';
 import Seo from '../../components/Seo';
+import MarkdownRenderer from '../../components/MarkdownRenderer';
 import { setupPdfWorker } from '../../utils/pdfWorker';
 import { toast } from 'sonner';
 
@@ -172,9 +173,9 @@ const TranslatePDF: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Languages size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('pdfTranslation.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('pdfTranslation.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('pdfTranslation.subtitle')}
                     </p>
                 </div>
@@ -245,7 +246,7 @@ const TranslatePDF: React.FC = () => {
                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                                 <div className="flex items-center gap-3 text-green-600">
                                     <CheckCircle size={24} />
-                                    <h2 className="text-2xl font-bold text-slate-900">{t('pdfTranslation.success')}</h2>
+                                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{t('pdfTranslation.success')}</h2>
                                 </div>
                                 <div className="flex flex-wrap gap-2 w-full sm:w-auto">
                                     {['pt', 'en', 'es'].includes(targetLanguage) && (
@@ -272,9 +273,10 @@ const TranslatePDF: React.FC = () => {
                             </div>
 
                             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 relative group min-h-[300px] max-h-[600px] overflow-y-auto">
-                                <div className={`prose prose-slate max-w-none text-slate-700 leading-relaxed whitespace-pre-wrap font-sans text-lg ${['ar', 'he'].includes(targetLanguage) ? 'text-right' : 'text-left'}`} dir={['ar', 'he'].includes(targetLanguage) ? 'rtl' : 'ltr'}>
-                                    {result}
-                                </div>
+                                <MarkdownRenderer
+                                    content={result}
+                                    className={`text-base sm:text-lg ${['ar', 'he'].includes(targetLanguage) ? 'text-right' : 'text-left'}`}
+                                />
                             </div>
 
                             <div className="mt-8 pt-8 border-t border-slate-100">

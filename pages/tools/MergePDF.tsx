@@ -82,9 +82,9 @@ const MergePDF: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Merge size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('merge.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('merge.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('merge.description')}
                     </p>
                 </div>
@@ -127,7 +127,7 @@ const MergePDF: React.FC = () => {
                                 <div className="bg-indigo-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 mx-auto">
                                     <Merge className="text-white" size={32} />
                                 </div>
-                                <h2 className="text-3xl font-black text-slate-900 mb-4">{t('merge.success')}</h2>
+                                <h2 className="text-xl sm:text-3xl font-black text-slate-900 mb-4">{t('merge.success')}</h2>
                                 <p className="text-slate-500 font-medium text-lg mb-10">{t('merge.description')}</p>
                             </div>
 

@@ -250,9 +250,9 @@ const ImageConverter: React.FC = () => {
             <div className="bg-indigo-100 p-3 rounded-2xl text-indigo-600">
               <ImageIcon size={32} />
             </div>
-            <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('imageConverter.title')}</h1>
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('imageConverter.title')}</h1>
           </div>
-          <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+          <p className="text-slate-600 text-base sm:text-lg">
             {t('imageConverter.subtitle')}
           </p>
         </div>
@@ -524,7 +524,7 @@ const ImageConverter: React.FC = () => {
             <div className="mt-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
               <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4 border-b border-slate-100 pb-6">
                 <div>
-                  <h3 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-3">
                     <CheckCircle className="text-green-500" size={28} />
                     {t('imageConverter.resultsTitle')}
                   </h3>

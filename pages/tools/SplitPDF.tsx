@@ -158,9 +158,9 @@ const SplitPDF: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Scissors size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('split.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('split.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('split.description')}
                     </p>
                 </div>
@@ -293,7 +293,7 @@ const SplitPDF: React.FC = () => {
                                 <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
                                     <CheckCircle className="text-green-600 w-12 h-12" />
                                 </div>
-                                <h2 className="text-3xl font-black text-slate-900 mb-4">{t('split.success')}</h2>
+                                <h2 className="text-xl sm:text-3xl font-black text-slate-900 mb-4">{t('split.success')}</h2>
                                 <p className="text-slate-500 font-medium text-lg mb-10">{t('split.description')}</p>
                             </div>
 

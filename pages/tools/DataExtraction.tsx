@@ -179,14 +179,14 @@ const DataExtraction: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Database size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('dataExtraction.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('dataExtraction.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('dataExtraction.subtitle')}
                     </p>
                 </div>
 
-                <div className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100">
+                <div className="bg-white p-4 sm:p-8 rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100">
                     <Dropzone
                         onFileSelect={handleFileSelect}
                         accept="application/pdf"
@@ -201,7 +201,7 @@ const DataExtraction: React.FC = () => {
                                     <button
                                         key={type}
                                         onClick={() => toggleType(type)}
-                                        className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all font-bold text-sm
+                                        className={`flex items-center gap-2 sm:gap-3 p-3 sm:p-4 rounded-2xl border-2 transition-all font-bold text-xs sm:text-sm
                       ${selectedTypes.includes(type)
                                                 ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
                                                 : 'border-slate-100 bg-slate-50 text-slate-500 hover:border-slate-200'}`}
@@ -248,7 +248,7 @@ const DataExtraction: React.FC = () => {
                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                                 <div className="flex items-center gap-3 text-green-600">
                                     <CheckCircle size={24} />
-                                    <h2 className="text-2xl font-bold text-slate-900">{t('dataExtraction.success')}</h2>
+                                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{t('dataExtraction.success')}</h2>
                                 </div>
                                 <div className="flex flex-wrap gap-2 w-full sm:w-auto">
                                     <button

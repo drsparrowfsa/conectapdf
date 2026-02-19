@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
+import MarkdownRenderer from '../../components/MarkdownRenderer';
 import { useTranslation } from 'react-i18next';
 import { geminiService } from '../../services/geminiService';
 import { jsPDF } from 'jspdf';
@@ -180,9 +181,9 @@ const ContractGenerator: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <FileSignature size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('contractGenerator.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('contractGenerator.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('contractGenerator.subtitle')}
                     </p>
                 </div>
@@ -379,7 +380,7 @@ const ContractGenerator: React.FC = () => {
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-8">
                                 <div className="flex items-center gap-3 text-indigo-600">
                                     <CheckCircle size={24} />
-                                    <h2 className="text-2xl font-bold text-slate-900">{t('contractGenerator.success')}</h2>
+                                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{t('contractGenerator.success')}</h2>
                                 </div>
                                 <div className="flex flex-wrap gap-2 w-full lg:w-auto">
                                     <button
@@ -417,16 +418,14 @@ const ContractGenerator: React.FC = () => {
                                     <textarea
                                         value={result}
                                         onChange={(e) => setResult(e.target.value)}
-                                        className="w-full min-h-[500px] p-0 bg-transparent border-none outline-none font-serif text-lg leading-relaxed text-slate-700 resize-none"
+                                        className="w-full min-h-[500px] p-0 bg-transparent border-none outline-none font-serif text-base sm:text-lg leading-relaxed text-slate-700 resize-none"
                                         autoFocus
                                     />
                                 ) : (
-                                    <div
-                                        className={`prose prose-slate max-w-none text-slate-700 leading-relaxed whitespace-pre-wrap font-serif text-lg ${isRtl ? 'text-right' : 'text-left'}`}
-                                        dir={isRtl ? 'rtl' : 'ltr'}
-                                    >
-                                        {result}
-                                    </div>
+                                    <MarkdownRenderer
+                                        content={result}
+                                        className={`font-serif text-base sm:text-lg ${isRtl ? 'text-right' : 'text-left'}`}
+                                    />
                                 )}
                             </div>
 

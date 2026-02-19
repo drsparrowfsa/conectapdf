@@ -337,9 +337,9 @@ export const resources = {
                     emails: "E-mails",
                     phones: "Telefones",
                     dates: "Datas",
-                    numbers: "Valores/Números",
+                    numbers: "Números",
                     addresses: "Endereços",
-                    names: "Nomes/Pessoas"
+                    names: "Nomes"
                 },
                 error: "Por favor, selecione um arquivo PDF.",
                 errorExtract: "Não foi possível extrair texto legível deste PDF.",
@@ -808,9 +808,9 @@ export const resources = {
                     emails: "Emails",
                     phones: "Phones",
                     dates: "Dates",
-                    numbers: "Values/Numbers",
+                    numbers: "Numbers",
                     addresses: "Addresses",
-                    names: "Names/People"
+                    names: "Names"
                 },
                 error: "Please select a PDF file.",
                 errorExtract: "Could not extract readable text from this PDF.",
@@ -1268,9 +1268,9 @@ export const resources = {
                     emails: "Correos",
                     phones: "Teléfonos",
                     dates: "Fechas",
-                    numbers: "Valores/Números",
+                    numbers: "Números",
                     addresses: "Direcciones",
-                    names: "Nombres/Personas"
+                    names: "Nombres"
                 },
                 error: "Por favor, seleccione un archivo PDF.",
                 errorExtract: "No se pudo extraer texto legible de este PDF.",

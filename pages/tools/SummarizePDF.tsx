@@ -7,6 +7,7 @@ import { geminiService, SummaryType } from '../../services/geminiService';
 import * as pdfjsLib from 'pdfjs-dist';
 import BackButton from '../../components/BackButton';
 import Seo from '../../components/Seo';
+import MarkdownRenderer from '../../components/MarkdownRenderer';
 import { setupPdfWorker } from '../../utils/pdfWorker';
 import { toast } from 'sonner';
 
@@ -111,9 +112,9 @@ const SummarizePDF: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <FileText size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('aiSummary.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('aiSummary.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('aiSummary.subtitle')}
                     </p>
                 </div>
@@ -183,7 +184,7 @@ const SummarizePDF: React.FC = () => {
                             <div className="flex justify-between items-center mb-6">
                                 <div className="flex items-center gap-3 text-green-600">
                                     <CheckCircle size={24} />
-                                    <h2 className="text-2xl font-bold text-slate-900">{t('aiSummary.success')}</h2>
+                                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{t('aiSummary.success')}</h2>
                                 </div>
                                 <button
                                     onClick={copyToClipboard}
@@ -192,10 +193,8 @@ const SummarizePDF: React.FC = () => {
                                     <Copy size={18} /> {t('aiSummary.copy')}
                                 </button>
                             </div>
-                            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 relative group">
-                                <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed whitespace-pre-wrap font-sans text-lg">
-                                    {result}
-                                </div>
+                            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 relative group min-h-[200px]">
+                                <MarkdownRenderer content={result} className="text-base sm:text-lg" />
                             </div>
 
                             <div className="mt-8 pt-8 border-t border-slate-100">

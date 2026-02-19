@@ -119,9 +119,9 @@ const OcrPDF: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <ScanText size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('ocr.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('ocr.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('ocr.description')}
                     </p>
                 </div>
@@ -179,7 +179,7 @@ const OcrPDF: React.FC = () => {
                             <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-3 text-green-600">
                                     <CheckCircle size={24} />
-                                    <h2 className="text-2xl font-bold text-slate-900">{t('ocr.success')}</h2>
+                                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{t('ocr.success')}</h2>
                                 </div>
                                 <button
                                     onClick={copyToClipboard}

@@ -164,9 +164,9 @@ const ClassifyPDF: React.FC = () => {
                         <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
                             <Tags size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('docClassification.title')}</h1>
+                        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('docClassification.title')}</h1>
                     </div>
-                    <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+                    <p className="text-slate-600 text-base sm:text-lg">
                         {t('docClassification.subtitle')}
                     </p>
                 </div>
@@ -214,7 +214,7 @@ const ClassifyPDF: React.FC = () => {
                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                                 <div className="flex items-center gap-3 text-indigo-600">
                                     <CheckCircle size={24} />
-                                    <h2 className="text-2xl font-bold text-slate-900">{t('docClassification.success')}</h2>
+                                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{t('docClassification.success')}</h2>
                                 </div>
                                 <button
                                     onClick={exportToJson}
@@ -234,7 +234,7 @@ const ClassifyPDF: React.FC = () => {
                                                 {getIcon(cat.icon)}
                                             </div>
                                             <div>
-                                                <h4 className="text-lg font-bold text-slate-900">{cat.name}</h4>
+                                                <h4 className="text-base sm:text-lg font-bold text-slate-900">{cat.name}</h4>
                                                 <p className="text-slate-500 text-sm">{cat.description}</p>
                                             </div>
                                         </div>
@@ -277,7 +277,7 @@ const ClassifyPDF: React.FC = () => {
                                     <Info size={20} />
                                     {t('docClassification.analysisTitle')}
                                 </h3>
-                                <div className="prose prose-invert prose-indigo max-w-none text-slate-300 leading-relaxed text-lg">
+                                <div className="prose prose-invert prose-indigo max-w-none text-slate-300 leading-relaxed text-base sm:text-lg">
                                     {result.analysis}
                                 </div>
                             </div>

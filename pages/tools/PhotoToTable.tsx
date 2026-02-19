@@ -6,6 +6,7 @@ import Seo from '../../components/Seo';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import Dropzone from '../../components/Dropzone';
+import MarkdownRenderer from '../../components/MarkdownRenderer';
 import { geminiService } from '../../services/geminiService';
 
 const PhotoToTable: React.FC = () => {
@@ -70,9 +71,9 @@ const PhotoToTable: React.FC = () => {
             <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
               <Table size={32} />
             </div>
-            <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('photoToTable.title')}</h1>
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('photoToTable.title')}</h1>
           </div>
-          <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+          <p className="text-slate-600 text-base sm:text-lg">
             {t('photoToTable.subtitle')}
           </p>
         </div>
@@ -112,7 +113,7 @@ const PhotoToTable: React.FC = () => {
           {result && (
             <div className="mt-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-slate-900">{t('photoToTable.success')}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900">{t('photoToTable.success')}</h3>
                 <div className="flex gap-2">
                   <button
                     onClick={copyToClipboard}
@@ -122,8 +123,8 @@ const PhotoToTable: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="bg-slate-900 text-slate-100 p-6 rounded-2xl overflow-x-auto">
-                <pre className="font-mono text-sm whitespace-pre-wrap">{result}</pre>
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 overflow-x-auto min-h-[200px]">
+                <MarkdownRenderer content={result} />
               </div>
             </div>
           )}

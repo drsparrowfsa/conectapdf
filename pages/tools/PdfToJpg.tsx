@@ -126,9 +126,9 @@ const PdfToJpg: React.FC = () => {
             <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
               <FileImage size={32} />
             </div>
-            <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{t('pdfToJpg.title')}</h1>
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{t('pdfToJpg.title')}</h1>
           </div>
-          <p className={`text-slate-600 text-lg ${isRtl ? 'mr-[72px]' : 'ml-[72px]'}`}>
+          <p className="text-slate-600 text-base sm:text-lg">
             {t('pdfToJpg.description')}
           </p>
         </div>
@@ -186,7 +186,7 @@ const PdfToJpg: React.FC = () => {
               <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle size={40} />
               </div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-2">{t('pdfToJpg.success')}</h2>
+              <h2 className="text-xl sm:text-3xl font-bold text-slate-900 mb-2">{t('pdfToJpg.success')}</h2>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                 <button
